@@ -84,8 +84,7 @@ public class EmployeeService implements EmployeeServiceInterface {
     }
 
     @Override
-    public String printEmployees() {
-        String string;
+    public void printEmployees() {
         List<Employee> employees = employeeRepository.findAll();
         List<State> states = stateService.findAllStates();
         List<City> cities = cityService.findAllCities();
@@ -93,12 +92,27 @@ public class EmployeeService implements EmployeeServiceInterface {
 
         printEmployees(employees, states, cities, addresses);
 
-        return "In Console server side";
     }
 
     private void printEmployees(List<Employee> employees, List<State> states, List<City> cities, List<Address> addresses) {
+        State state = states.get(0);
+        System.out.println(state.getName());
 
+        for (City city : cities) {
+            for (Address address : addresses) {
+                if (address.getState().equals(state) && address.getCity().equals(city)) {
+                    System.out.println("---- " + city.getName());
+                    for (Employee employee : employees) {
+                        if (employee.getAddress().equals(address))
+                            System.out.println("---- ---- " + employee.getName() + employee.getSurname());
+                    }
+                }
 
+            }
+        }
+        states.remove(0);
+        if (!states.isEmpty())
+            printEmployees(employees, states, cities, addresses);
     }
 }
 

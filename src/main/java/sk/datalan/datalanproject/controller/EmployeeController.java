@@ -56,8 +56,8 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/print")
-    public String printEmployees() {
-        return employeeService.printEmployees();
+    public void printEmployees() {
+        employeeService.printEmployees();
     }
 
 }

@@ -126,13 +126,9 @@ public class MyTest {
 
     }
 
-    /**
-     * kedze som zatial nespravil tuto cast,posielam sa v requeste na zlu url preto tu vznika error NOT FOUND
-     * tu je oznacenie casti kde pada EXCEPTION
-     */
     @Test
     public void printEmployees() throws Exception {
-        HttpGet httpGet = new HttpGet("http://localhost:9955/employee/prin");
+        HttpGet httpGet = new HttpGet("http://localhost:9955/employee/print");
         httpGet.setHeader("Content-type", "application/json");
 
         HttpClient httpclient = new DefaultHttpClient();

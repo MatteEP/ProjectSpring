@@ -20,6 +20,6 @@ public interface EmployeeServiceInterface {
 
     List<Employee> getEmployeesByCity(String code);
 
-    String printEmployees();
+    void printEmployees();
 
 }
