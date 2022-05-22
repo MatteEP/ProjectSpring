@@ -20,6 +20,11 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    /**
+     *
+     * @param employeeRequest tu by mohla padnut exception keby dostal nespravne telo requestu BAD REQUEST 400
+     * @return
+     */
     @PostMapping
     public ResponseEntity<EmployeeResponse> addEmployee(@RequestBody EmployeeRequest employeeRequest) {
         return new ResponseEntity<>(new EmployeeResponse(employeeService.addEmployee(employeeRequest)), HttpStatus.CREATED);
